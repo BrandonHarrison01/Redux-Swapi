@@ -11,11 +11,12 @@ export const FAILURE = 'FAILURE';
 // the url to fetch characters from is `https://swapi.co/api/people/`
 // remember that now we have controll over our thunk-based action creator
 
-export const getCharacter = () => dispatch => {
+export const getCharacters = () => dispatch => {
     dispatch({ type: FETCHING });
     axios
         .get(`https://swapi.co/api/people/`)
         .then(res => {
+            console.log(res);
             dispatch({ type: SUCCESS, payload: res.data });
         })
         .catch(err => dispatch({ type: FAILURE }))
